@@ -1,24 +1,27 @@
 'use strict';
+function birthday(s, d, m) {
 
-function breakingRecords(scores) {
+    if(s.length == 1 && s[0] ==  d)
+        return 1
 
+    let count = 0;
 
-    let max = [scores[0]];
-    let min = [scores[0]];
+    for(let i = 0 ; i < s.length; i++) {
+        let list = s.slice()
+        let arr = list.slice(i, i+m)
+        let sum = 0;
+        arr.forEach(el => {
+            sum += el;
+        });
 
-    
+        if(sum == d)
+            count += 1;
+    }
+       
+    return count;
 
-    scores.forEach(el => {
-        console.log(el);
-        if(el > max[max.length-1])
-            max.push(el);
-
-        if(el < min[min.length-1])
-            min.push(el);
-    })  
-
-    return [max.length - 1, min.length - 1 ]
 }
 
 
-console.log(breakingRecords([10,5,20,20,4,5,2,25,1]));
+
+console.log(birthday([1,2,1,3,2], 3, 2 ));
